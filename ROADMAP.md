@@ -51,7 +51,7 @@ Exit criteria:
 
 ## 0.3.0 - CAM16 and HCT
 
-Статус: текущий этап.
+Статус: завершено.
 
 Scope:
 - `ViewingConditions`.
@@ -76,6 +76,8 @@ Exit criteria:
 - Public Rust API exposes stable value types, not C++-style mutable classes.
 
 ## 0.4.0 - Palettes, Contrast, Blend, Dislike
+
+Статус: текущий этап.
 
 Scope:
 - Tonal palettes.
