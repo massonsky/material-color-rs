@@ -1,8 +1,34 @@
+load("@rules_cc//cc:cc_import.bzl", "cc_import")
+
 package(default_visibility = ["//visibility:public"])
 
 filegroup(
     name = "srcs",
     srcs = glob(["src/**/*.rs"]) + [
         "Cargo.toml",
+    ],
+)
+
+genrule(
+    name = "libmaterial_color_capi_archive",
+    srcs = [
+        "//:Cargo.lock",
+        "//:Cargo.toml",
+        "//crates/material_color:srcs",
+        "//crates/material_color_py:srcs",
+        ":srcs",
+    ],
+    outs = ["libmaterial_color_capi.a"],
+    cmd = "CARGO_HOME=$(@D)/cargo-home CARGO_TARGET_DIR=$(@D)/cargo-target cargo build --offline --locked --manifest-path $(location //:Cargo.toml) --package material_color_capi --release && cp $(@D)/cargo-target/release/libmaterial_color_capi.a $@",
+)
+
+cc_import(
+    name = "material_color_capi_static",
+    static_library = ":libmaterial_color_capi_archive",
+    alwayslink = True,
+    linkopts = [
+        "-ldl",
+        "-lm",
+        "-lpthread",
     ],
 )

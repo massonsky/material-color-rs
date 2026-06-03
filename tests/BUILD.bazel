@@ -1,3 +1,4 @@
+load("@rules_cc//cc:cc_test.bzl", "cc_test")
 load("//tools/bazel:scaffold_test.bzl", "scaffold_test")
 
 package(default_visibility = ["//visibility:public"])
@@ -16,4 +17,10 @@ scaffold_test(
         "//:workspace_files",
         "//crates/material_color:srcs",
     ],
+)
+
+cc_test(
+    name = "cpp_integration_smoke_test",
+    srcs = ["cpp/material_color_cpp_smoke.cc"],
+    deps = ["//bindings/cpp:material_color_cpp"],
 )

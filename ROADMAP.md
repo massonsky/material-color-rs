@@ -169,6 +169,8 @@ Exit criteria:
 
 ## 0.7.0 - C ABI and C++ Integration
 
+Статус: завершено.
+
 Scope:
 - Define stable C ABI over Rust core.
 - Generate or maintain `material_color.h`.

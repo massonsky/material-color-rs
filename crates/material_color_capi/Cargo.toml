@@ -13,5 +13,9 @@ crate-type = ["cdylib", "staticlib", "rlib"]
 [dependencies]
 material_color = { path = "../material_color" }
 
-[lints]
-workspace = true
+[lints.rust]
+unsafe_code = "allow"
+
+[lints.clippy]
+all = "warn"
+pedantic = "warn"

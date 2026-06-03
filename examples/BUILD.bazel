@@ -1,4 +1,12 @@
+load("@rules_cc//cc:cc_binary.bzl", "cc_binary")
+
 package(default_visibility = ["//visibility:public"])
+
+cc_binary(
+    name = "cpp_dynamic_scheme",
+    srcs = ["cpp_dynamic_scheme.cc"],
+    deps = ["//bindings/cpp:material_color_cpp"],
+)
 
 filegroup(
     name = "examples",
