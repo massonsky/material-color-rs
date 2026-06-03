@@ -195,6 +195,8 @@ Exit criteria:
 
 ## 0.8.0 - Python Integration
 
+Статус: завершено.
+
 Scope:
 - PyO3 extension module.
 - Python-facing wrappers for:

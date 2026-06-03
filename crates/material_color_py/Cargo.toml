@@ -12,6 +12,11 @@ crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 material_color = { path = "../material_color" }
+pyo3 = { version = "0.28.3", features = ["abi3-py310"] }
 
-[lints]
-workspace = true
+[lints.rust]
+unsafe_code = "allow"
+
+[lints.clippy]
+all = "warn"
+pedantic = "warn"

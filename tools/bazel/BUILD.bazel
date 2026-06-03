@@ -1,1 +1,4 @@
-exports_files(["scaffold_test.bzl"])
+exports_files([
+    "python_extension_test.bzl",
+    "scaffold_test.bzl",
+])

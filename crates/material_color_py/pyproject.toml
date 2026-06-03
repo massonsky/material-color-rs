@@ -1,0 +1,15 @@
+[build-system]
+requires = ["maturin>=1.7,<2"]
+build-backend = "maturin"
+
+[project]
+name = "material-color-py"
+version = "0.8.0"
+description = "Python bindings for the pure Rust Material color utilities implementation."
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+
+[tool.maturin]
+bindings = "pyo3"
+manifest-path = "Cargo.toml"
+module-name = "material_color_py"

@@ -19,7 +19,7 @@ genrule(
         ":srcs",
     ],
     outs = ["libmaterial_color_capi.a"],
-    cmd = "CARGO_HOME=$(@D)/cargo-home CARGO_TARGET_DIR=$(@D)/cargo-target cargo build --offline --locked --manifest-path $(location //:Cargo.toml) --package material_color_capi --release && cp $(@D)/cargo-target/release/libmaterial_color_capi.a $@",
+    cmd = "CARGO_HOME=/home/dev/.cargo CARGO_TARGET_DIR=$(@D)/cargo-target cargo build --offline --locked --manifest-path $(location //:Cargo.toml) --package material_color_capi --release && cp $(@D)/cargo-target/release/libmaterial_color_capi.a $@",
 )
 
 cc_import(
