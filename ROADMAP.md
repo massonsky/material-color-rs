@@ -13,7 +13,7 @@
 
 ## 0.1.0 - Project Scaffold
 
-Статус: текущий стартовый этап.
+Статус: завершено.
 
 Scope:
 - Создать структуру workspace.
@@ -26,6 +26,8 @@ Exit criteria:
 - Roadmap зафиксирован в репозитории.
 
 ## 0.2.0 - Core Color Primitives
+
+Статус: текущий этап.
 
 Scope:
 - `Argb` и RGB channel helpers.
@@ -255,4 +257,3 @@ Potential follow-up work:
 - Optional serde support for schemes and palettes.
 - Fuzz testing for color conversion and FFI inputs.
 - Additional language bindings generated from the C ABI.
-
