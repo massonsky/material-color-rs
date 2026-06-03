@@ -1,0 +1,17 @@
+[package]
+name = "material_color_py"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lib]
+name = "material_color_py"
+path = "src/lib.rs"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+material_color = { path = "../material_color" }
+
+[lints]
+workspace = true

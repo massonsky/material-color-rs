@@ -1,0 +1,12 @@
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "workspace_files",
+    srcs = [
+        ".bazelversion",
+        "Cargo.lock",
+        "Cargo.toml",
+        "MODULE.bazel",
+        "ROADMAP.md",
+    ],
+)

@@ -1,0 +1,19 @@
+load("//tools/bazel:scaffold_test.bzl", "scaffold_test")
+
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "fixtures",
+    srcs = glob([
+        "fixtures/**",
+        "golden/**",
+    ]),
+)
+
+scaffold_test(
+    name = "scaffold_smoke_test",
+    data = [
+        "//:workspace_files",
+        "//crates/material_color:srcs",
+    ],
+)
