@@ -142,6 +142,8 @@ Exit criteria:
 
 ## 0.6.0 - Quantization, Scoring, Temperature
 
+Статус: завершено.
+
 Scope:
 - Lab quantization helper.
 - Wu quantizer.

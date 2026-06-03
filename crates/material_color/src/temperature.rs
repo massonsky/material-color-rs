@@ -1,9 +1,9 @@
-use crate::argb::Argb;
 use crate::cam::Hct;
-use crate::utils::{PI, WHITE_POINT_D65, sanitize_degrees_double, sanitize_degrees_int};
+use crate::quantize::lab::lab_from_argb;
+use crate::utils::{PI, sanitize_degrees_double, sanitize_degrees_int};
 
 #[derive(Clone, Debug)]
-pub(crate) struct TemperatureCache {
+pub struct TemperatureCache {
     input: Hct,
     complement: Option<Hct>,
     hcts_by_hue: Option<Vec<Hct>>,
@@ -12,7 +12,7 @@ pub(crate) struct TemperatureCache {
 
 impl TemperatureCache {
     #[must_use]
-    pub(crate) const fn new(input: Hct) -> Self {
+    pub const fn new(input: Hct) -> Self {
         Self {
             input,
             complement: None,
@@ -21,7 +21,7 @@ impl TemperatureCache {
         }
     }
 
-    pub(crate) fn complement(&mut self) -> Hct {
+    pub fn complement(&mut self) -> Hct {
         if let Some(complement) = self.complement {
             return complement;
         }
@@ -80,7 +80,7 @@ impl TemperatureCache {
         clippy::cast_sign_loss,
         clippy::similar_names
     )]
-    pub(crate) fn analogous_colors(&mut self, count: usize, divisions: usize) -> Vec<Hct> {
+    pub fn analogous_colors(&mut self, count: usize, divisions: usize) -> Vec<Hct> {
         let start_hue = round_to_hue_index(self.input.hue());
         let hcts_by_hue = self.hcts_by_hue();
         let start_hct = hcts_by_hue[start_hue];
@@ -147,7 +147,7 @@ impl TemperatureCache {
         answers
     }
 
-    pub(crate) fn relative_temperature(&mut self, hct: Hct) -> f64 {
+    pub fn relative_temperature(&mut self, hct: Hct) -> f64 {
         let coldest_temp = Self::raw_temperature(self.coldest());
         let warmest_temp = Self::raw_temperature(self.warmest());
         let range = warmest_temp - coldest_temp;
@@ -160,7 +160,7 @@ impl TemperatureCache {
     }
 
     #[must_use]
-    pub(crate) fn raw_temperature(color: Hct) -> f64 {
+    pub fn raw_temperature(color: Hct) -> f64 {
         let lab = lab_from_argb(color.to_argb());
         let hue = sanitize_degrees_double(lab.b.atan2(lab.a) * 180.0 / PI);
         let chroma = lab.a.hypot(lab.b);
@@ -212,43 +212,6 @@ impl TemperatureCache {
     }
 }
 
-#[derive(Clone, Copy, Debug, Default, PartialEq)]
-struct Lab {
-    l: f64,
-    a: f64,
-    b: f64,
-}
-
-#[allow(clippy::similar_names)]
-fn lab_from_argb(argb: Argb) -> Lab {
-    let red_l = crate::utils::linearized(argb.red());
-    let green_l = crate::utils::linearized(argb.green());
-    let blue_l = crate::utils::linearized(argb.blue());
-    let x = 0.412_338_95 * red_l + 0.357_620_64 * green_l + 0.180_510_42 * blue_l;
-    let y = 0.2126 * red_l + 0.7152 * green_l + 0.0722 * blue_l;
-    let z = 0.019_321_41 * red_l + 0.119_163_82 * green_l + 0.950_344_78 * blue_l;
-    let fy = lab_f(y / WHITE_POINT_D65[1]);
-    let fx = lab_f(x / WHITE_POINT_D65[0]);
-    let fz = lab_f(z / WHITE_POINT_D65[2]);
-
-    Lab {
-        l: 116.0 * fy - 16.0,
-        a: 500.0 * (fx - fy),
-        b: 200.0 * (fy - fz),
-    }
-}
-
-fn lab_f(normalized: f64) -> f64 {
-    const E: f64 = 216.0 / 24_389.0;
-    const KAPPA: f64 = 24_389.0 / 27.0;
-
-    if normalized > E {
-        normalized.powf(1.0 / 3.0)
-    } else {
-        (KAPPA * normalized + 16.0) / 116.0
-    }
-}
-
 #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)]
 fn round_to_hue_index(hue: f64) -> usize {
     hue.round().clamp(0.0, 360.0) as usize
@@ -257,6 +220,7 @@ fn round_to_hue_index(hue: f64) -> usize {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::argb::Argb;
     use crate::utils::hex_from_argb;
 
     fn assert_near(actual: f64, expected: f64, tolerance: f64) {
