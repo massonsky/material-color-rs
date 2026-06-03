@@ -42,17 +42,35 @@ pub struct MaterialColorPopulation {
 }
 
 #[repr(C)]
-#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct MaterialColorArgbArray {
     pub data: *mut u32,
     pub len: usize,
 }
 
 #[repr(C)]
-#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct MaterialColorPopulationArray {
     pub data: *mut MaterialColorPopulation,
     pub len: usize,
+}
+
+impl Default for MaterialColorArgbArray {
+    fn default() -> Self {
+        Self {
+            data: ptr::null_mut(),
+            len: 0,
+        }
+    }
+}
+
+impl Default for MaterialColorPopulationArray {
+    fn default() -> Self {
+        Self {
+            data: ptr::null_mut(),
+            len: 0,
+        }
+    }
 }
 
 fn ffi_guard(function: impl FnOnce() -> MaterialColorStatus) -> MaterialColorStatus {
@@ -405,6 +423,17 @@ pub extern "C" fn material_color_population_array_free(array: MaterialColorPopul
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn array_defaults_are_null_and_empty() {
+        let argb_array = MaterialColorArgbArray::default();
+        assert!(argb_array.data.is_null());
+        assert_eq!(argb_array.len, 0);
+
+        let population_array = MaterialColorPopulationArray::default();
+        assert!(population_array.data.is_null());
+        assert_eq!(population_array.len, 0);
+    }
 
     #[test]
     fn hct_ffi_smoke() {
