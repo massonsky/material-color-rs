@@ -4,6 +4,9 @@
 //! C++ wrapper and Python extension. It ports the Material color utilities
 //! algorithms without a runtime dependency on the original C++ library.
 
+/// Crate version from Cargo metadata.
+pub const VERSION: &str = env!("CARGO_PKG_VERSION");
+
 pub mod argb;
 pub mod blend;
 pub mod cam;

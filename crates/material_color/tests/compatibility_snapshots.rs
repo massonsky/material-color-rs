@@ -1,6 +1,7 @@
 use std::collections::BTreeMap;
 
 use material_color::TemperatureCache;
+use material_color::VERSION;
 use material_color::argb::Argb;
 use material_color::blend;
 use material_color::cam::Hct;
@@ -14,6 +15,11 @@ fn assert_near(actual: f64, expected: f64, tolerance: f64) {
         (actual - expected).abs() <= tolerance,
         "actual {actual} expected {expected} tolerance {tolerance}",
     );
+}
+
+#[test]
+fn rust_version_surface_is_stable() {
+    assert_eq!(VERSION, "1.0.0");
 }
 
 #[test]

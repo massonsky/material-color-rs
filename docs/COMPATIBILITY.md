@@ -24,7 +24,7 @@ using pure Rust as the only algorithm implementation.
 - `//tests:python_import_smoke_test` validates PyO3 extension import and
   representative Python workflows.
 
-## Known Limitations Before 1.0
+## Known Limitations
 
 - No `no_std` support.
 - No WASM binding.

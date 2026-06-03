@@ -17,6 +17,26 @@ using Role = MaterialColorRole;
 using Hct = MaterialColorHct;
 using Population = MaterialColorPopulation;
 
+struct Version {
+  uint32_t major;
+  uint32_t minor;
+  uint32_t patch;
+};
+
+inline constexpr Version kHeaderVersion{
+    MATERIAL_COLOR_VERSION_MAJOR,
+    MATERIAL_COLOR_VERSION_MINOR,
+    MATERIAL_COLOR_VERSION_PATCH,
+};
+
+[[nodiscard]] inline Version RuntimeVersion() {
+  return {
+      material_color_version_major(),
+      material_color_version_minor(),
+      material_color_version_patch(),
+  };
+}
+
 inline void Check(Status status) {
   if (status != MATERIAL_COLOR_STATUS_OK) {
     throw std::runtime_error("material_color C ABI call failed");

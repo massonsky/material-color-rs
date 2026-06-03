@@ -13,6 +13,27 @@ use material_color::score::{ScoreOptions, ranked_suggestions as core_ranked_sugg
 use pyo3::prelude::*;
 use pyo3::{exceptions::PyValueError, types::PyAny};
 
+const VERSION: &str = env!("CARGO_PKG_VERSION");
+const VERSION_MAJOR: u32 = parse_version_component(env!("CARGO_PKG_VERSION_MAJOR"));
+const VERSION_MINOR: u32 = parse_version_component(env!("CARGO_PKG_VERSION_MINOR"));
+const VERSION_PATCH: u32 = parse_version_component(env!("CARGO_PKG_VERSION_PATCH"));
+
+#[allow(clippy::cast_lossless)]
+const fn parse_version_component(value: &str) -> u32 {
+    let bytes = value.as_bytes();
+    let mut index = 0;
+    let mut parsed = 0;
+
+    while index < bytes.len() {
+        let byte = bytes[index];
+        assert!(byte >= b'0' && byte <= b'9');
+        parsed = parsed * 10 + (byte - b'0') as u32;
+        index += 1;
+    }
+
+    parsed
+}
+
 #[pyclass(name = "Variant", frozen, skip_from_py_object)]
 #[derive(Clone, Copy, Debug)]
 struct PyVariant {
@@ -523,8 +544,18 @@ fn temperature_analogous(argb: u32, count: usize, divisions: usize) -> PyResult<
         .collect())
 }
 
+#[pyfunction]
+fn version() -> &'static str {
+    VERSION
+}
+
 #[pymodule]
 fn material_color_py(m: &Bound<'_, PyModule>) -> PyResult<()> {
+    m.add("__version__", VERSION)?;
+    m.add("VERSION", VERSION)?;
+    m.add("VERSION_MAJOR", VERSION_MAJOR)?;
+    m.add("VERSION_MINOR", VERSION_MINOR)?;
+    m.add("VERSION_PATCH", VERSION_PATCH)?;
     m.add_class::<PyArgb>()?;
     m.add_class::<PyHct>()?;
     m.add_class::<PyTonalPalette>()?;
@@ -537,5 +568,6 @@ fn material_color_py(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(ranked_suggestions, m)?)?;
     m.add_function(wrap_pyfunction!(temperature_complement, m)?)?;
     m.add_function(wrap_pyfunction!(temperature_analogous, m)?)?;
+    m.add_function(wrap_pyfunction!(version, m)?)?;
     Ok(())
 }

@@ -9,7 +9,7 @@ The Bazel workspace builds the same Rust implementation used by Cargo.
 ```starlark
 module(
     name = "material_color_rs",
-    version = "0.9.0",
+    version = "1.0.0",
 )
 ```
 

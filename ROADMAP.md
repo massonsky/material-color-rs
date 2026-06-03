@@ -246,6 +246,8 @@ Exit criteria:
 
 ## 1.0.0 - Stable Release
 
+Статус: завершено.
+
 Scope:
 - Stabilize Rust public API.
 - Stabilize C ABI versioning.

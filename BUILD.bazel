@@ -5,6 +5,7 @@ filegroup(
     srcs = [
         ".bazelversion",
         ".bazelrc",
+        "CHANGELOG.md",
         "Cargo.lock",
         "Cargo.toml",
         "MODULE.bazel",

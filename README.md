@@ -8,7 +8,7 @@ bindings call into the Rust implementation and do not duplicate algorithms.
 
 ## Status
 
-Current milestone: `0.9.0`.
+Current milestone: `1.0.0`.
 
 Implemented modules:
 
@@ -30,6 +30,7 @@ let scheme = DynamicScheme::from_argb(source, Variant::TonalSpot, false, 0.0);
 let primary = scheme.color(DynamicColorRole::Primary);
 
 assert_eq!(primary.to_u32(), 0xff44_5e91);
+assert_eq!(material_color::VERSION, "1.0.0");
 ```
 
 Useful commands:
@@ -100,6 +101,6 @@ integration snapshots, C++ smoke tests and Python import workflow tests. See
 
 ## API Policy
 
-`0.9.x` is the stabilization window before `1.0.0`. Public APIs should only
-change when the change improves compatibility, safety or naming consistency
-before the stable release. See [docs/API_STABILITY.md](docs/API_STABILITY.md).
+`1.x` follows the compatibility policy in
+[docs/API_STABILITY.md](docs/API_STABILITY.md). Migration notes from the C++
+implementation are in [docs/MIGRATION.md](docs/MIGRATION.md).

@@ -4,6 +4,17 @@
 #include "material_color/material_color.hpp"
 
 int main() {
+  static_assert(MATERIAL_COLOR_VERSION_MAJOR == 1);
+  static_assert(MATERIAL_COLOR_VERSION_MINOR == 0);
+  static_assert(MATERIAL_COLOR_VERSION_PATCH == 0);
+  static_assert(material_color::kHeaderVersion.major == 1);
+
+  const material_color::Version runtime_version = material_color::RuntimeVersion();
+  if (runtime_version.major != 1 || runtime_version.minor != 0 ||
+      runtime_version.patch != 0) {
+    return 10;
+  }
+
   const uint32_t blue = material_color::ArgbFromRgb(0, 0, 255);
   if (blue != 0xff0000ff) {
     return 1;

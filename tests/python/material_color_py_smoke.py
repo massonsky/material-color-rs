@@ -2,6 +2,13 @@ import material_color_py as mc
 
 
 def main() -> None:
+    assert mc.__version__ == "1.0.0"
+    assert mc.VERSION == "1.0.0"
+    assert mc.VERSION_MAJOR == 1
+    assert mc.VERSION_MINOR == 0
+    assert mc.VERSION_PATCH == 0
+    assert mc.version() == "1.0.0"
+
     blue = mc.Argb.from_rgb(66, 133, 244)
     assert int(blue) == 0xFF4285F4
     assert blue.alpha == 0xFF

@@ -5,6 +5,11 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#define MATERIAL_COLOR_VERSION_MAJOR 1
+#define MATERIAL_COLOR_VERSION_MINOR 0
+#define MATERIAL_COLOR_VERSION_PATCH 0
+#define MATERIAL_COLOR_VERSION "1.0.0"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
