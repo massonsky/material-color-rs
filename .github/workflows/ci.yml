@@ -56,5 +56,7 @@ jobs:
             ln -s "$HOME/.npm-global/bin/bazelisk" "$HOME/.npm-global/bin/bazel"
           fi
           echo "$HOME/.npm-global/bin" >> "$GITHUB_PATH"
+      - name: Fetch Cargo dependencies
+        run: cargo fetch --locked
       - run: bazel test //...
       - run: bazel build //examples:cpp_dynamic_scheme //examples:cpp_extract_colors

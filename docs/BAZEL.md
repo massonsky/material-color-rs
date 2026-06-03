@@ -31,6 +31,7 @@ The C++ wrapper uses `rules_cc`.
 ## Commands
 
 ```sh
+cargo fetch --locked
 bazel test //...
 bazel build //examples:cpp_dynamic_scheme
 ```
@@ -39,4 +40,5 @@ The Rust genrules prepend `$CARGO_HOME/bin` to `PATH` and run Cargo in offline
 locked mode. They expect the crate index and dependencies to be available in
 `CARGO_HOME`, or in Cargo's default `$HOME/.cargo` cache. `.bazelrc` passes both
 `CARGO_HOME` and `HOME` into actions so local and CI builds use the same cache
-resolution rules.
+resolution rules. On clean machines and CI runners, run `cargo fetch --locked`
+before Bazel so the offline actions can resolve crates from the locked graph.
