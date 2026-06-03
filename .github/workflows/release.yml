@@ -34,7 +34,7 @@ jobs:
           echo "version=${version}" >> "${GITHUB_OUTPUT}"
 
   crates:
-    name: Cargo crates
+    name: Cargo crate
     needs: metadata
     runs-on: ubuntu-latest
     steps:
@@ -45,8 +45,6 @@ jobs:
         with:
           toolchain: "1.85"
       - run: cargo package -p material_color --locked
-      - run: cargo package -p material_color_capi --locked
-      - run: cargo package -p material_color_py --locked
       - uses: actions/upload-artifact@v4
         with:
           name: crates

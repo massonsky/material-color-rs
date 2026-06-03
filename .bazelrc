@@ -1,1 +1,2 @@
 common --action_env=CARGO_HOME
+common --action_env=HOME

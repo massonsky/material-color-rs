@@ -25,6 +25,7 @@ jobs:
       - run: python3 tools/release/check_versions.py
       - run: cargo test --workspace --locked
       - run: cargo clippy --workspace --all-targets --locked
+      - run: cargo package -p material_color --locked
       - run: cargo build -p material_color_py --release --locked
       - run: |
           mkdir -p /tmp/material_color_py
@@ -49,4 +50,4 @@ jobs:
           key: bazel-${{ runner.os }}-${{ hashFiles('MODULE.bazel', 'Cargo.lock') }}
       - run: npm install -g @bazel/bazelisk
       - run: bazel test //...
-      - run: bazel build //examples:cpp_dynamic_scheme
+      - run: bazel build //examples:cpp_dynamic_scheme //examples:cpp_extract_colors

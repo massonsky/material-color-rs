@@ -16,7 +16,7 @@ path = "src/lib.rs"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-material_color = { path = "../material_color" }
+material_color = { path = "../material_color", version = "1.0.0" }
 pyo3 = { version = "0.28.3", features = ["abi3-py310"] }
 
 [lints.rust]

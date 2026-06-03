@@ -36,6 +36,6 @@ bazel build //examples:cpp_dynamic_scheme
 ```
 
 The Rust genrules run Cargo in offline locked mode and expect the crate index and
-dependencies to be available in `CARGO_HOME`. `.bazelrc` passes `CARGO_HOME`
-into actions when it is set; local development falls back to `/home/dev/.cargo`.
-CI should populate and export `CARGO_HOME` before Bazel tests.
+dependencies to be available in `CARGO_HOME`, or in Cargo's default
+`$HOME/.cargo` cache. `.bazelrc` passes both `CARGO_HOME` and `HOME` into
+actions so local and CI builds use the same cache resolution rules.

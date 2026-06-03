@@ -20,11 +20,15 @@ Build commands:
 
 ```sh
 cargo package -p material_color --list --offline
-cargo package -p material_color_capi --list --offline
-cargo package -p material_color_py --list --offline
 cargo build -p material_color_py --release --offline
 bazel build //examples:cpp_dynamic_scheme
 ```
+
+`material_color_capi` and `material_color_py` depend on the published
+`material_color` crate for registry verification. The GitHub release workflow
+ships their production artifacts as native library archives and Python wheels;
+their `.crate` packages can be published after `material_color` is available in
+the registry.
 
 Wheel builds are configured through `crates/material_color_py/pyproject.toml`
 and maturin:

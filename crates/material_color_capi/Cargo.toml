@@ -16,7 +16,7 @@ path = "src/lib.rs"
 crate-type = ["cdylib", "staticlib", "rlib"]
 
 [dependencies]
-material_color = { path = "../material_color" }
+material_color = { path = "../material_color", version = "1.0.0" }
 
 [lints.rust]
 unsafe_code = "allow"
