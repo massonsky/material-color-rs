@@ -14,8 +14,19 @@ Current milestone: `1.0.0`.
 
 This project is an independent Rust port of Google's
 [Material Color Utilities](https://github.com/material-foundation/material-color-utilities),
-the color algorithm library behind dynamic color in Material Design. See
-[NOTICE](NOTICE) for upstream attribution and trademark notes.
+the color algorithm library behind dynamic color in
+[Material Design](https://m3.material.io/).
+
+Official upstream references:
+
+- [Material Color Utilities](https://github.com/material-foundation/material-color-utilities)
+- [Material Design color styles](https://m3.material.io/styles/color)
+- [Material Theme Builder](https://material-foundation.github.io/material-theme-builder/)
+
+Material Design, Material You and related names are trademarks of Google LLC.
+This project is not affiliated with, endorsed by, sponsored by or maintained by
+Google LLC. See [NOTICE](NOTICE) for full upstream attribution and trademark
+notes.
 
 Implemented modules:
 
