@@ -27,7 +27,7 @@ Exit criteria:
 
 ## 0.2.0 - Core Color Primitives
 
-Статус: текущий этап.
+Статус: завершено.
 
 Scope:
 - `Argb` и RGB channel helpers.
@@ -50,6 +50,8 @@ Exit criteria:
 - Нет `unsafe` в core.
 
 ## 0.3.0 - CAM16 and HCT
+
+Статус: текущий этап.
 
 Scope:
 - `ViewingConditions`.
