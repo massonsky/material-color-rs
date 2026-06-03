@@ -2,6 +2,20 @@
 
 ## Release Artifacts
 
+The GitHub Actions release workflow is tag-driven:
+
+```sh
+git tag -a v1.0.0 -m "material color 1.0.0"
+git push origin v1.0.0
+```
+
+It builds:
+
+- Cargo `.crate` packages.
+- PyO3 wheels for Linux, macOS and Windows.
+- Native C ABI/C++ wrapper archives for Linux, macOS and Windows.
+- `SHA256SUMS.txt`.
+
 Build commands:
 
 ```sh

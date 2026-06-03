@@ -22,6 +22,7 @@ jobs:
             target
           key: cargo-${{ runner.os }}-${{ hashFiles('Cargo.lock') }}
       - run: cargo fmt --check
+      - run: python3 tools/release/check_versions.py
       - run: cargo test --workspace --locked
       - run: cargo clippy --workspace --all-targets --locked
       - run: cargo build -p material_color_py --release --locked
