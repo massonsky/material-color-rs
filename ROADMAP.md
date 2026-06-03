@@ -220,6 +220,8 @@ Exit criteria:
 
 ## 0.9.0 - Compatibility, Documentation, Hardening
 
+Статус: завершено.
+
 Scope:
 - Full compatibility test suite against C++ reference data.
 - Documentation for Rust, C ABI, C++ and Python usage.

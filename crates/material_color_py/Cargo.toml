@@ -4,6 +4,11 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 rust-version.workspace = true
+description = "PyO3 bindings for the pure Rust Material Design color utilities."
+documentation = "https://docs.rs/material_color_py"
+readme = "../../README.md"
+keywords = ["material-design", "color", "python"]
+categories = ["graphics", "api-bindings"]
 
 [lib]
 name = "material_color_py"

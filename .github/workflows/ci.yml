@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  cargo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.85"
+          components: rustfmt, clippy
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: cargo-${{ runner.os }}-${{ hashFiles('Cargo.lock') }}
+      - run: cargo fmt --check
+      - run: cargo test --workspace --locked
+      - run: cargo clippy --workspace --all-targets --locked
+      - run: cargo build -p material_color_py --release --locked
+      - run: |
+          mkdir -p /tmp/material_color_py
+          cp target/release/libmaterial_color_py.so /tmp/material_color_py/material_color_py.so
+          PYTHONPATH=/tmp/material_color_py python3 tests/python/material_color_py_smoke.py
+
+  bazel:
+    runs-on: ubuntu-latest
+    env:
+      CARGO_HOME: /home/runner/.cargo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.85"
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/bazel
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: bazel-${{ runner.os }}-${{ hashFiles('MODULE.bazel', 'Cargo.lock') }}
+      - run: npm install -g @bazel/bazelisk
+      - run: bazel test //...
+      - run: bazel build //examples:cpp_dynamic_scheme

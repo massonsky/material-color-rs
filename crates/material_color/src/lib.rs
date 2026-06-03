@@ -1,3 +1,9 @@
+//! Pure Rust Material Design color utilities.
+//!
+//! This crate contains the shared implementation used by the Rust API, C ABI,
+//! C++ wrapper and Python extension. It ports the Material color utilities
+//! algorithms without a runtime dependency on the original C++ library.
+
 pub mod argb;
 pub mod blend;
 pub mod cam;

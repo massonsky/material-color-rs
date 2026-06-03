@@ -13,6 +13,10 @@ use material_color::quantize;
 use material_color::score::{ScoreOptions, ranked_suggestions};
 use material_color::utils;
 
+const VERSION_MAJOR: u32 = parse_version_component(env!("CARGO_PKG_VERSION_MAJOR"));
+const VERSION_MINOR: u32 = parse_version_component(env!("CARGO_PKG_VERSION_MINOR"));
+const VERSION_PATCH: u32 = parse_version_component(env!("CARGO_PKG_VERSION_PATCH"));
+
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum MaterialColorStatus {
@@ -132,19 +136,35 @@ fn role_from_i32(value: i32) -> Option<DynamicColorRole> {
         .and_then(|index| DynamicColorRole::ALL.get(index).copied())
 }
 
+#[allow(clippy::cast_lossless)]
+const fn parse_version_component(value: &str) -> u32 {
+    let bytes = value.as_bytes();
+    let mut index = 0;
+    let mut parsed = 0;
+
+    while index < bytes.len() {
+        let byte = bytes[index];
+        assert!(byte >= b'0' && byte <= b'9');
+        parsed = parsed * 10 + (byte - b'0') as u32;
+        index += 1;
+    }
+
+    parsed
+}
+
 #[unsafe(no_mangle)]
 pub extern "C" fn material_color_version_major() -> u32 {
-    0
+    VERSION_MAJOR
 }
 
 #[unsafe(no_mangle)]
 pub extern "C" fn material_color_version_minor() -> u32 {
-    7
+    VERSION_MINOR
 }
 
 #[unsafe(no_mangle)]
 pub extern "C" fn material_color_version_patch() -> u32 {
-    0
+    VERSION_PATCH
 }
 
 #[unsafe(no_mangle)]
@@ -454,5 +474,12 @@ mod tests {
             material_color_hct_from_argb(0xff00_00ff, ptr::null_mut()),
             MaterialColorStatus::InvalidArgument
         );
+    }
+
+    #[test]
+    fn c_abi_version_matches_crate_metadata() {
+        assert_eq!(material_color_version_major(), VERSION_MAJOR);
+        assert_eq!(material_color_version_minor(), VERSION_MINOR);
+        assert_eq!(material_color_version_patch(), VERSION_PATCH);
     }
 }

@@ -4,6 +4,11 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 rust-version.workspace = true
+description = "Pure Rust Material Design color utilities."
+documentation = "https://docs.rs/material_color"
+readme = "../../README.md"
+keywords = ["material-design", "color", "hct", "cam16"]
+categories = ["graphics", "algorithms"]
 
 [lib]
 name = "material_color"

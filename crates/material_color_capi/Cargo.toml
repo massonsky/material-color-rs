@@ -4,6 +4,11 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 rust-version.workspace = true
+description = "C ABI for the pure Rust Material Design color utilities."
+documentation = "https://docs.rs/material_color_capi"
+readme = "../../README.md"
+keywords = ["material-design", "color", "ffi"]
+categories = ["graphics", "external-ffi-bindings"]
 
 [lib]
 name = "material_color_capi"

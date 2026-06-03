@@ -4,9 +4,18 @@ filegroup(
     name = "workspace_files",
     srcs = [
         ".bazelversion",
+        ".bazelrc",
         "Cargo.lock",
         "Cargo.toml",
         "MODULE.bazel",
         "ROADMAP.md",
+        "README.md",
     ],
+)
+
+filegroup(
+    name = "docs",
+    srcs = glob([
+        "docs/**/*.md",
+    ]),
 )
