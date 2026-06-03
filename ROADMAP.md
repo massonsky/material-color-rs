@@ -77,7 +77,7 @@ Exit criteria:
 
 ## 0.4.0 - Palettes, Contrast, Blend, Dislike
 
-Статус: текущий этап.
+Статус: завершено.
 
 Scope:
 - Tonal palettes.
@@ -103,6 +103,8 @@ Exit criteria:
 - No dependency on dynamic scheme code yet.
 
 ## 0.5.0 - Dynamic Material Schemes
+
+Статус: завершено.
 
 Scope:
 - `Variant`.
