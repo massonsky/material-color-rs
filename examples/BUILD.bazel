@@ -1,4 +1,5 @@
 load("@rules_cc//cc:cc_binary.bzl", "cc_binary")
+load("//tools/bazel:python_extension_test.bzl", "python_extension_test")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -6,6 +7,18 @@ cc_binary(
     name = "cpp_dynamic_scheme",
     srcs = ["cpp_dynamic_scheme.cc"],
     deps = ["//bindings/cpp:material_color_cpp"],
+)
+
+cc_binary(
+    name = "cpp_extract_colors",
+    srcs = ["cpp/extract_colors.cc"],
+    deps = ["//bindings/cpp:material_color_cpp"],
+)
+
+python_extension_test(
+    name = "python_dynamic_scheme_example_test",
+    extension = "//crates/material_color_py:material_color_py_extension",
+    script = "python/dynamic_scheme.py",
 )
 
 filegroup(

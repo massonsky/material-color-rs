@@ -36,6 +36,7 @@ assert_eq!(material_color::VERSION, "1.0.0");
 Useful commands:
 
 ```sh
+cargo run -p material_color --example dynamic_scheme --offline
 cargo test --workspace --offline
 cargo clippy --workspace --all-targets --offline
 cargo run -p material_color --example benchmark --release --offline
@@ -59,6 +60,7 @@ Build the C++ example:
 
 ```sh
 bazel build //examples:cpp_dynamic_scheme
+bazel run //examples:cpp_extract_colors
 ```
 
 ## Python
@@ -82,6 +84,8 @@ PYTHONPATH=/tmp/material_color_py python3 tests/python/material_color_py_smoke.p
 ```
 
 Wheel builds use `crates/material_color_py/pyproject.toml` with maturin.
+
+More examples are available in [examples/](examples/).
 
 ## Bazel
 
