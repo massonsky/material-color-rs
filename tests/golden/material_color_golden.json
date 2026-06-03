@@ -1,0 +1,171 @@
+{
+  "version": "1.0.0",
+  "source_colors": [
+    {
+      "argb": "0xff4285f4",
+      "hct": {
+        "hue": 265.9794034468702,
+        "chroma": 62.26911056191568,
+        "tone": 56.55034873735502
+      },
+      "palette": {
+        "key_color": "0xff2b74e2",
+        "tone_40": "0xff005ac1"
+      },
+      "schemes": [
+        {
+          "variant": "TONAL_SPOT",
+          "dark": false,
+          "contrast": 0.0,
+          "roles": {
+            "PRIMARY": "0xff445e91",
+            "ON_PRIMARY": "0xffffffff",
+            "PRIMARY_CONTAINER": "0xffd8e2ff",
+            "SECONDARY": "0xff575e71",
+            "TERTIARY": "0xff715573",
+            "SURFACE": "0xfff9f9ff",
+            "ON_SURFACE": "0xff1a1b20",
+            "ERROR": "0xffba1a1a"
+          }
+        },
+        {
+          "variant": "VIBRANT",
+          "dark": false,
+          "contrast": 0.0,
+          "roles": {
+            "PRIMARY": "0xff005ac1",
+            "ON_PRIMARY": "0xffffffff",
+            "PRIMARY_CONTAINER": "0xffd8e2ff",
+            "SECONDARY": "0xff595c7e",
+            "TERTIARY": "0xff625789",
+            "SURFACE": "0xfff9f9ff",
+            "ON_SURFACE": "0xff181c25",
+            "ERROR": "0xffba1a1a"
+          }
+        },
+        {
+          "variant": "TONAL_SPOT",
+          "dark": true,
+          "contrast": 0.0,
+          "roles": {
+            "PRIMARY": "0xffadc6ff",
+            "ON_PRIMARY": "0xff102f60",
+            "PRIMARY_CONTAINER": "0xff2b4678",
+            "SECONDARY": "0xffbfc6dc",
+            "TERTIARY": "0xffdebcdf",
+            "SURFACE": "0xff111318",
+            "ON_SURFACE": "0xffe2e2e9",
+            "ERROR": "0xffffb4ab"
+          }
+        }
+      ]
+    },
+    {
+      "argb": "0xffff0000",
+      "hct": {
+        "hue": 27.408223459863496,
+        "chroma": 113.35790113829388,
+        "tone": 53.23288178584245
+      },
+      "palette": {
+        "key_color": "0xfffe0000",
+        "tone_40": "0xffc00100"
+      },
+      "schemes": [
+        {
+          "variant": "TONAL_SPOT",
+          "dark": false,
+          "contrast": 0.0,
+          "roles": {
+            "PRIMARY": "0xff904b40",
+            "ON_PRIMARY": "0xffffffff",
+            "PRIMARY_CONTAINER": "0xffffdad4",
+            "SECONDARY": "0xff775651",
+            "TERTIARY": "0xff705c2e",
+            "SURFACE": "0xfffff8f6",
+            "ON_SURFACE": "0xff231918",
+            "ERROR": "0xffba1a1a"
+          }
+        },
+        {
+          "variant": "VIBRANT",
+          "dark": false,
+          "contrast": 0.0,
+          "roles": {
+            "PRIMARY": "0xffc00100",
+            "ON_PRIMARY": "0xffffffff",
+            "PRIMARY_CONTAINER": "0xffffdad4",
+            "SECONDARY": "0xff80543d",
+            "TERTIARY": "0xff835423",
+            "SURFACE": "0xfffff8f6",
+            "ON_SURFACE": "0xff271815",
+            "ERROR": "0xffba1a1a"
+          }
+        }
+      ]
+    },
+    {
+      "argb": "0xff6750a4",
+      "hct": {
+        "hue": 298.98100611582413,
+        "chroma": 47.856529019540545,
+        "tone": 40.08324408746242
+      },
+      "palette": {
+        "key_color": "0xff8069bf",
+        "tone_40": "0xff6750a4"
+      },
+      "schemes": [
+        {
+          "variant": "EXPRESSIVE",
+          "dark": false,
+          "contrast": 0.0,
+          "roles": {
+            "PRIMARY": "0xff006b5a",
+            "ON_PRIMARY": "0xffffffff",
+            "PRIMARY_CONTAINER": "0xff95f4dc",
+            "SECONDARY": "0xff79536a",
+            "TERTIARY": "0xff735280",
+            "SURFACE": "0xfffff7fd",
+            "ON_SURFACE": "0xff1f1a21",
+            "ERROR": "0xffba1a1a"
+          }
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "fixture": "fixtures/extraction_pixels.txt",
+    "max_colors": 4,
+    "populations": {
+      "0xff0000ff": 1,
+      "0xff247719": 4,
+      "0xffff0000": 3,
+      "0xffffffff": 4
+    },
+    "ranked": {
+      "desired": 4,
+      "fallback": "0xff4285f4",
+      "filter": true,
+      "suggestions": [
+        "0xffff0000",
+        "0xff247719",
+        "0xff0000ff"
+      ]
+    }
+  },
+  "blend_temperature": {
+    "source": "0xff4285f4",
+    "design": "0xffff0000",
+    "harmonize": "0xfffb0057",
+    "hct_hue_50": "0xffeb00ba",
+    "complement": "0xffd06e00",
+    "analogous": [
+      "0xff1d9c46",
+      "0xff00988c",
+      "0xff4285f4",
+      "0xff9671ed",
+      "0xffbc64d0"
+    ]
+  }
+}

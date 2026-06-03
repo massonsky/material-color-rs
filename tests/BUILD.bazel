@@ -7,6 +7,7 @@ package(default_visibility = ["//visibility:public"])
 filegroup(
     name = "fixtures",
     srcs = glob([
+        "compatibility/**",
         "fixtures/**",
         "golden/**",
     ]),
@@ -30,4 +31,11 @@ python_extension_test(
     name = "python_import_smoke_test",
     extension = "//crates/material_color_py:material_color_py_extension",
     script = "python/material_color_py_smoke.py",
+)
+
+python_extension_test(
+    name = "python_golden_compatibility_test",
+    data = [":fixtures"],
+    extension = "//crates/material_color_py:material_color_py_extension",
+    script = "compatibility/material_color_golden.py",
 )

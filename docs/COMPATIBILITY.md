@@ -18,6 +18,9 @@ using pure Rust as the only algorithm implementation.
 - `crates/material_color/tests/compatibility_snapshots.rs` covers public
   end-to-end snapshots across HCT, palettes, dynamic schemes, quantization,
   scoring, blending and temperature.
+- `tests/golden/material_color_golden.json` and
+  `tests/fixtures/extraction_pixels.txt` provide root-level compatibility data
+  validated by `//tests:python_golden_compatibility_test`.
 - C ABI tests validate status handling, pointer validation and allocation
   ownership.
 - `//tests:cpp_integration_smoke_test` validates C++ linkage through Bazel.

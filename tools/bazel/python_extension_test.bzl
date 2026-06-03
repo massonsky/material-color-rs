@@ -22,15 +22,22 @@ PYTHONPATH="${{TEST_TMPDIR}}" python3 "${{script}}"
 
     return [DefaultInfo(
         executable = executable,
-        runfiles = ctx.runfiles(files = [
-            ctx.file.extension,
-            ctx.file.script,
-        ]),
+        runfiles = ctx.runfiles(
+            files = [
+                ctx.file.extension,
+                ctx.file.script,
+            ],
+            transitive_files = depset(transitive = [
+                target.files
+                for target in ctx.attr.data
+            ]),
+        ),
     )]
 
 python_extension_test = rule(
     implementation = _python_extension_test_impl,
     attrs = {
+        "data": attr.label_list(allow_files = True),
         "extension": attr.label(allow_single_file = True, mandatory = True),
         "script": attr.label(allow_single_file = [".py"], mandatory = True),
     },
