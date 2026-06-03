@@ -3,6 +3,13 @@
 The project targets behavioral parity with `material-color-utilities/cpp` while
 using pure Rust as the only algorithm implementation.
 
+Upstream reference:
+
+- Material Color Utilities:
+  https://github.com/material-foundation/material-color-utilities
+- Material Design color styles:
+  https://m3.material.io/styles/color
+
 ## Covered Surface
 
 - `cpp/utils` -> `material_color::utils`, `Argb`.

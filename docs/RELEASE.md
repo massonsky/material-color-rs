@@ -30,6 +30,9 @@ ships their production artifacts as native library archives and Python wheels;
 their `.crate` packages can be published after `material_color` is available in
 the registry.
 
+Release archives and the GitHub release asset set include `LICENSE` and
+`NOTICE`. Keep both files with any redistributed source or binary artifacts.
+
 Wheel builds are configured through `crates/material_color_py/pyproject.toml`
 and maturin:
 

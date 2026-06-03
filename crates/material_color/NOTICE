@@ -1,0 +1,31 @@
+material-color-rs
+Copyright 2026 material-color-rs contributors
+
+This project is an independent Rust port of Material Color Utilities algorithms.
+It is distributed under the Apache License, Version 2.0.
+
+Portions of the algorithms, reference behavior, test vectors and public
+terminology are derived from or based on Google's Material Color Utilities:
+
+  Material Color Utilities
+  https://github.com/material-foundation/material-color-utilities
+  Copyright 2021 Google LLC
+  Licensed under the Apache License, Version 2.0
+
+Material Design, Material You and related names are trademarks of Google LLC.
+This project is not affiliated with, endorsed by, sponsored by or maintained by
+Google LLC.
+
+Relevant upstream and design-system references:
+
+  Material Color Utilities:
+  https://github.com/material-foundation/material-color-utilities
+
+  Material Design:
+  https://m3.material.io/
+
+  Material Design color styles:
+  https://m3.material.io/styles/color
+
+  Material Theme Builder:
+  https://material-foundation.github.io/material-theme-builder/

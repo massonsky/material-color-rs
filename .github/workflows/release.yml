@@ -142,6 +142,7 @@ jobs:
           set -euo pipefail
           mkdir -p dist
           find artifacts -type f -exec cp {} dist/ \;
+          cp LICENSE NOTICE dist/
           cd dist
           sha256sum * > SHA256SUMS.txt
       - uses: softprops/action-gh-release@v2

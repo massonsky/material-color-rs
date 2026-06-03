@@ -3,6 +3,10 @@
 This project replaces runtime use of the original C++ implementation with a
 pure Rust core and thin bindings.
 
+Original upstream project:
+
+- https://github.com/material-foundation/material-color-utilities
+
 ## C++ Projects
 
 ### Before

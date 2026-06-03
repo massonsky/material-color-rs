@@ -59,6 +59,8 @@ def main() -> int:
             "include/material_color/material_color.hpp",
         )
         add_file(archive, ROOT / "README.md", "README.md")
+        add_file(archive, ROOT / "LICENSE", "LICENSE")
+        add_file(archive, ROOT / "NOTICE", "NOTICE")
         add_file(archive, ROOT / "CHANGELOG.md", "CHANGELOG.md")
         add_file(archive, ROOT / "docs/RELEASE.md", "docs/RELEASE.md")
         for library in libraries:

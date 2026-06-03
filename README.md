@@ -10,6 +10,13 @@ bindings call into the Rust implementation and do not duplicate algorithms.
 
 Current milestone: `1.0.0`.
 
+## Attribution
+
+This project is an independent Rust port of Google's
+[Material Color Utilities](https://github.com/material-foundation/material-color-utilities),
+the color algorithm library behind dynamic color in Material Design. See
+[NOTICE](NOTICE) for upstream attribution and trademark notes.
+
 Implemented modules:
 
 - ARGB utilities, L*, XYZ/Lab helpers and tone conversion.
@@ -108,3 +115,8 @@ integration snapshots, C++ smoke tests and Python import workflow tests. See
 `1.x` follows the compatibility policy in
 [docs/API_STABILITY.md](docs/API_STABILITY.md). Migration notes from the C++
 implementation are in [docs/MIGRATION.md](docs/MIGRATION.md).
+
+## License
+
+Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) and
+[NOTICE](NOTICE).
